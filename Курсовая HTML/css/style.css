@@ -1,0 +1,216 @@
+footer {
+    display: flex;
+    background-color: rgb(247, 197, 104);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+footer a {
+    color: black;
+    text-decoration: none;
+    margin: 1rem;
+}
+
+footer img {
+    height: 1.2rem;
+    width: auto;    
+    align-items: center;
+    position: relative;
+    margin-left: 5px;
+}
+
+footer a:hover {
+    background-color: rgb(196, 153, 74);
+    align-items:center;
+    transition: 0.5s;
+}
+
+body {
+    margin: 0 auto;
+}
+
+.navbar img {
+    width: 6rem;
+    height: auto;
+}
+
+header {
+    display: flex;
+    background-color: rgb(247, 197, 104);
+    justify-content: center;
+}
+
+header a {
+    color: black;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+html {
+    font-size: 20px;
+    height: 100%;
+}
+
+.autorization {
+    margin: 1rem;
+    background-color: rgb(243, 242, 240);
+    justify-content: center;
+}
+
+nav a:hover {
+    font-size: 1rem;
+    color: red;
+    font-size: 110%;
+}
+
+nav a {
+    padding: 1rem;
+}
+
+.form-reg {
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-size: 30px;
+}
+
+.form-reg div {
+    margin-top: 10px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+#gallery div {
+    padding: 5px;
+}
+
+.info {
+    width: 1200px;
+    align-items: center;
+    text-align: center;
+}
+
+.other img {
+    width: 320px;
+    height: 320px;
+}
+
+.other {
+    justify-content: center;
+    align-items:center;
+}
+
+.other p {
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+}
+
+.pizza img {
+    width: 320px;
+    height: 320px;
+}
+
+
+article h3 {
+    text-align: center;
+}
+
+article p {
+    text-align: center;
+}
+
+.pizza img {
+    display: block;
+    align-items:center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pizza h4 {
+    text-align: center;
+}
+
+.pizza p {
+    text-align: center;
+}
+
+html {
+    height: 1 00%;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-block {
+    /* grow shrink basis */
+    flex: 1 0 auto;
+}
+
+del {
+    color:tomato;
+    margin: 2px;
+}
+
+.main-pizza {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin: 0;
+}
+
+@media screen and (min-width: 600px) and (max-width: 800px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+    .container {
+        width: auto;
+        display: flex;
+
+    }
+}
+
+
+@media screen and (max-width:599px) {
+    header form {
+        display: none;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        width: auto;
+        }
+
+    .flex-row {
+        display: block;
+    }
+    #gallery div {
+        display: inline-block;
+    }
+
+    .main-pizza {
+        justify-content: center;
+        text-align: center;
+    }
+    
+}
