@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/flex-grid.css">
+    <link rel="stylesheet" href="css/addtask.css">
+    <link rel="shortcut icon" href="img/js_ico.ico" type="image/x-icon"> 
+    <title>Добавление задачи</title>
+</head>
+<body>
+    <main>
+    <div class="flex-row table">
+        <form action="#" method="POST" class="col-8" id="form" name="addtask">
+            <fieldset>
+                <div class="flex-row title">
+                    <span class="col-5"><h1>Добавление задачи</h1></span>
+                    <span class="col-7 sucsecfull"><p></p>Задача была успешно добавлена</p></span>
+                </div>
+
+                <div class="flex-row nametask">
+                    <label class="col-4" for="nametask">Название задачи</label>
+                    <div class="col-8">
+                        <input name="title" type="text" id="nametask" placeholder="Введите название задачи">
+                        <p class="error" id="name-error"></p>
+                    </div>
+                </div>
+
+                <div class="flex-row descriptiontask">
+                    <label class="col-4" for="descriptiontask">Описание задачи</label>
+                    <textarea name="description" class="col-8" type="text" rows="5" id="descriptiontask" placeholder="Введите описание задачи"></textarea>
+                </div>
+
+                <div class="flex-row datetask">
+                    <label class="col-4" for="datetask">Срок выполнения задачи</label>
+                    <div class="col-8">
+                    <input name="date" type="date" id="datetask">
+                    <p class="error" id="date-error">Дата не может быть в прошлом</p>
+                    </div>
+                </div>
+
+                <div class="adduser">
+                    <button class="col-5" type="button" id="adduser">Добавить участника</button>
+                </div>
+                <div class="flex-row wrap nameuser" id="newuser">
+                    <!-- <div>
+                    <input type="text" name="nameuser" placeholder="Введите имя участника">
+                    <button>X</button>
+                    </div> -->
+                </div>
+
+                <div class="flex-row addbutton">
+                    <button class="col-8" type="submit">Добавить задачу</button>
+                </div>
+
+            </fieldset>
+
+        </form>
+    </div>
+    </main>
+    <footer>
+        <a href="/alltask.html">Список задач</a>
+    </footer>
+
+<script src="js/addtask.js"></script>
+</body>
+</html>
