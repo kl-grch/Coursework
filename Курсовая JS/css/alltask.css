@@ -1,3 +1,41 @@
-.alltask {
+
+fieldset {
+    border: none;
+}
+
+.table {
     justify-content: center;
-};
+}
+
+.delbutton {
+    justify-content: center;
+    margin: 40px;
+}
+
+.title {
+    justify-content: center;
+}
+
+.task:nth-child(2n+1) {
+    background-color: linen;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-bottom: rgb(12, 10, 9);
+    text-align: center;
+}
+
+.task:nth-child(2n) {
+    background-color: burlywood;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-bottom: rgb(12, 10, 9);
+    text-align: center;
+}
+
+.task:nth-child(2n+1).active {
+    background-color: orange;
+}
+
+.task:nth-child(2n).active {
+    background-color: orange;
+}

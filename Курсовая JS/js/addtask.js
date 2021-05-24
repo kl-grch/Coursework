@@ -10,12 +10,15 @@ function addTask(event){
     let title = form.elements.title.value;
     let description = form.elements.description.value;
     let date = form.elements.date.value;
-    // let nameuser = form.elements.nameuser.value;
+    let currentDate = new Date();
+    let taskDate = new Date(date);
+    if (taskDate.getTime() < currentDate.getTime()){
+      return false;
+    };
     let taskObj = {};
     taskObj["title"] = title;
     taskObj["description"] = description;
     taskObj["date"] = date;
-    // taskObj["nameuser"] = nameuser;
     let storage = localStorage;
     let tasks = JSON.parse(storage.getItem("tasks"));
     if(!tasks) tasks = [];
@@ -23,6 +26,7 @@ function addTask(event){
     let arrToJson = JSON.stringify(tasks);
     console.log(arrToJson);
     storage.setItem("tasks", arrToJson);
+    
 };
 
 // ДОБАВЛЯЕМ УЧАСТНИКА
@@ -64,6 +68,11 @@ let nameRules = {
   errorField: document.getElementById("name-error")
 };
 
+let dateRules = {
+  elem: taskForm.elements.datetask,
+  errorField: document.getElementById("date-error")
+};
+
 let validator = {
   checkMinLen(rule){
       if ((rule.elem.value.length > rule.maxLength) || (rule.elem.value.length < rule.minLength)){
@@ -71,19 +80,39 @@ let validator = {
               "Значение должно быть в диапазоне от 1 до 20 симовлов";
           return false;
       }
+      if (rule.elem.value.length < rule.minLength){
+        return false;
+      }
       rule.errorField.innerText = "";
       return true;
+  },
+  checkDate(rule){
+    if (!rule.elem.value){
+      rule.errorField.innerText = "Дата не может быть пустой и меньше текущей";
+      return false;
+    }
+    rule.errorField.innerText = "+";
+    return true;
   }
-}
+
+};
+
 taskForm.elements.nametask
     .addEventListener("keyup", validator.checkMinLen.bind(null, nameRules));
+taskForm.elements.datetask
+    .addEventListener("keyup", validator.checkDate.bind(null, dateRules));
 
 
     taskForm.addEventListener("submit", (event)=>{
       event.preventDefault();
-      if (!validator.checkMinLen(nameRules) || !validator.checkMinLen(nameRules)){
-          console.log("Данные нельзя отправлять на сервер");
-      } else {
-          console.log("Данные можно отправлять на сервер");
+      if (!validator.checkMinLen(nameRules) && !validator.checkDate(dateRules)) {
+        return false;
+      }else if (!validator.checkMinLen(nameRules)) {
+        return false;
+      }else if (!validator.checkDate(dateRules)){
+        return false;
+      }else{
+        document.getElementById('submit').innerText = "Задача была успешно добавлена";
+        return true;
         }
-      })
+      });

@@ -1,14 +1,59 @@
 'use strict';
 
-// let currentDate = new Date();
-// console.log(`${currentDate.toDateString()}`);
+// ВЫВОДИМ СПИСОК ЗАДАЧ В HTML
+function allTask(){
+    let storage = localStorage;
+    let arrFromTasks = JSON.parse(storage.getItem('tasks'));
+    for (let tasks of arrFromTasks){
+        let divElem = document.createElement('div');
+        divElem.classList.add('task');
+        let h2Elem = document.createElement('h2');
+        h2Elem.innerText = `${tasks.title}`;
+        let pElem = document.createElement('p');
+        pElem.innerText = `${tasks.description}`;
+        let spanElem = document.createElement('p');
+        spanElem.innerHTML = `Выполнить к: <b>${tasks.date}</b>`;
+        let p2Elem = document.createElement('p');
+        // p2Elem.innerText = `Дополнительные участники: ${tasks.nameuser}`;
+        let section = document.getElementById('section');
+        section.append(divElem);
+        divElem.append(h2Elem, pElem, spanElem, p2Elem);
 
+        // ВЫДЕЛЕНИЕ ЭЛЕМЕНТА
 
-let storage = localStorage.getItem('tasks');
-console.log(storage);
+        divElem.addEventListener('click', function(){
+        if(this.classList.contains('active')){
+            this.classList.remove('active')
+        }else{
+            this.classList.add('active')
+        }
+        localStorage.setItem('tasks', JSON.stringify(arrFromTasks));
 
-// let storage = localStorage.getItem('tasks');
-// console.log(storage);
+        // удаление  по кнопке 
 
-let arrToJson = JSON.stringify(storage);
-console.log(arrToJson);
+        let button = document.getElementById('dellete');
+        button.addEventListener('click', del.bind(this));
+        function del(event){
+            event.preventDefault();
+            this.remove(this);
+
+            arrFromTasks.splice(tasks, 1);
+            localStorage.setItem('tasks', JSON.stringify(arrFromTasks));
+        }
+        });
+
+        // СОРТИРОВКА ПО ДАТЕ
+
+        arrFromTasks.sort(function(a,b){
+            if (a.date < b.date) return -1;
+            if (a.date > b.date) return 1;
+            return 0;
+        });
+    }
+}
+allTask();
+
+    
+// сообщение если нет задач
+
+// удаляем по кнопке
