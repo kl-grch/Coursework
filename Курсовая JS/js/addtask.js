@@ -8,8 +8,14 @@ form.addEventListener("submit", addTask);
 function addTask(event){
     event.preventDefault();
     let title = form.elements.title.value;
+    if (!title){
+      return false;
+    };
     let description = form.elements.description.value;
     let date = form.elements.date.value;
+    if (!date){
+      return false;
+    };
     let currentDate = new Date();
     let taskDate = new Date(date);
     if (taskDate.getTime() < currentDate.getTime()){

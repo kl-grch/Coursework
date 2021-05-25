@@ -40,6 +40,8 @@ function allTask(){
             arrFromTasks.splice(tasks, 1);
             localStorage.setItem('tasks', JSON.stringify(arrFromTasks));
         }
+
+
         });
 
         // СОРТИРОВКА ПО ДАТЕ
@@ -55,5 +57,3 @@ allTask();
 
     
 // сообщение если нет задач
-
-// удаляем по кнопке
