@@ -97,7 +97,7 @@ let validator = {
       rule.errorField.innerText = "Дата не может быть пустой и меньше текущей";
       return false;
     }
-    rule.errorField.innerText = "+";
+    rule.errorField.innerText = " ";
     return true;
   }
 
@@ -112,10 +112,13 @@ taskForm.elements.datetask
     taskForm.addEventListener("submit", (event)=>{
       event.preventDefault();
       if (!validator.checkMinLen(nameRules) && !validator.checkDate(dateRules)) {
+        document.getElementById('submit').innerText = " ";
         return false;
       }else if (!validator.checkMinLen(nameRules)) {
+        document.getElementById('submit').innerText = " ";
         return false;
       }else if (!validator.checkDate(dateRules)){
+        document.getElementById('submit').innerText = " ";
         return false;
       }else{
         document.getElementById('submit').innerText = "Задача была успешно добавлена";

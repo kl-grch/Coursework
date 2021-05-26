@@ -4,6 +4,11 @@
 function allTask(){
     let storage = localStorage;
     let arrFromTasks = JSON.parse(storage.getItem('tasks'));
+    if(!arrFromTasks || arrFromTasks.length == 0){
+    storage.clear();
+    document.getElementById('noTask').innerHTML = `<h1>Список задач пуст</h1>`;
+    document.getElementById('dellete').style.cssText = "display: none";
+    };
     for (let tasks of arrFromTasks){
         let divElem = document.createElement('div');
         divElem.classList.add('task');
@@ -18,6 +23,7 @@ function allTask(){
         let section = document.getElementById('section');
         section.append(divElem);
         divElem.append(h2Elem, pElem, spanElem, p2Elem);
+        
 
         // ВЫДЕЛЕНИЕ ЭЛЕМЕНТА
 
