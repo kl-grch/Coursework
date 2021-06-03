@@ -1,30 +1,29 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <apple-header background="black" :tabs="tabs"></apple-header>
+  <div>
+    <router-view></router-view>
   </div>
-  <router-view/>
+  <apple-footer background="black"></apple-footer>
 </template>
 
+<script>
+import AppleHeader from "@/components/AppleHeader"
+import AppleFooter from "@/components/AppleFooter"
+
+export default {
+components: {AppleHeader, AppleFooter},
+data () {
+  return {
+    tabs: [
+      {name: 'Каталог', path: '/catalog'},
+      {name: 'Авторизация', path: '/autorization'},
+      {name: 'Корзина', path: '/order'}
+    ]
+  }
+}
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
