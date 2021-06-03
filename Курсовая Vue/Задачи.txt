@@ -1,8 +1,0 @@
-vue create (имя проекта)
--> Default V3
-cd (папка проекта)
--> vue add router
-
-клонирование
-cd имя проекта
-npm install
