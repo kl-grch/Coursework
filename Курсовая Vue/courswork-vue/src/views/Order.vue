@@ -1,5 +1,8 @@
 <template>
   Корзина
+  <div class="order">
+    
+  </div>
 </template>
 
 <script>

@@ -1,25 +1,57 @@
 <template>
-  iPhone
-    <div>{{$route.params.id}}</div>
-  <h2>{{phone.title}}</h2>
-  <div>
-    <img :src="phone.img">
+<div class="cont">
+    <div class="phone col-6" v-for="phone in allPhone" :key="phone.id">
+    <h2>{{phone.title}}</h2>
+    <img :src="phone.img" height="250">
     <p>{{phone.description}}</p>
-    <p>Цена:<b>{{phone.price}}</b> руб</p>
+    <p><b>Цена: </b>{{phone.price}} руб</p>
+    <p><button type="button">Добавить в корзину</button></p>
+    <router-link :to="{name: 'Phone', params: {id: phone.id}}">Подробнее ➦</router-link>
   </div>
+  </div>
+    <router-view></router-view>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 export default {
-    name: "Phone",
+    name: "Phone", // allPhon
     computed: {
-      phone(){
-        return this.$store.getters.phoneById(this.$route.params.id);
-      }
-    }
+      ...mapGetters(['allPhone'])
+    },
+      created(){
+    // обращение к actions
+    this.$store.dispatch('loadData');
+  }
 }
+
+
 </script>
 
 <style scoped>
+
+a {
+  text-decoration: none;
+  color: brown;
+}
+
+.phone {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.cont {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  justify-items: center;
+  margin-bottom: 100px;
+}
+
+.catalog {
+  display: none;
+}
 
 </style>

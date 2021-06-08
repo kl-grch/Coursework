@@ -8,18 +8,42 @@ const routes = [
       {
         path: 'phone',
         component: () => import ('../views/catalog/Phone.vue'),
+        children: [
+          {
+            name: 'Phone',
+            path: 'phone/:id',
+          }
+        ]
       },
       {
         path: 'mac',
-        component: () => import ('../views/catalog/Mac.vue')
+        component: () => import ('../views/catalog/Mac.vue'),
+        children: [
+          {
+            name: 'Mac',
+            path: 'mac/:id',
+          }
+        ]
       },
       {
         path: 'pad',
-        component: () => import ('../views/catalog/Pad.vue')
+        component: () => import ('../views/catalog/Pad.vue'),
+        children: [
+          {
+            name: 'Pad',
+            path: 'pad/:id',
+        }
+        ]
       },
       {
         path: 'accses',
-        component: () => import ('../views/catalog/Accses.vue')
+        component: () => import ('../views/catalog/Accses.vue'),
+        children: [
+          {
+            name: 'Accses',
+            path: 'accses/:id',
+          }
+        ]
       },
     ]
   },
@@ -38,6 +62,10 @@ const routes = [
   {
     path: '/404',
     component: () => import('../views/NotFound.vue')
+  },
+  {
+    path: '/',
+    component: () => import('../views/Main.vue')
   }
 ]
 

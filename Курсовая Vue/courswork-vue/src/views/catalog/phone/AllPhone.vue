@@ -5,7 +5,7 @@
   <div>
       <img :src="phone.img">
       <p>{{phone.price}}</p>
-  </div> -->
+  </div>
 </template>
 
 <script>
