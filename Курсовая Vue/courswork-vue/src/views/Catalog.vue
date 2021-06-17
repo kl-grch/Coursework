@@ -3,7 +3,7 @@
 <apple-header :tabs="tabs" background="dimgrey" color="red"></apple-header>
 <router-view></router-view>
 
-<div class="catalog">
+<div class="catalog" v-if="$route.path.endsWith('catalog')">
 <div class="col-6">
   <h2>iPhone</h2>
   <a href="../catalog/phone">

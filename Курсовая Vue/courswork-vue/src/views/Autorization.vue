@@ -1,12 +1,13 @@
 <template>
-
 <div class="autorazation">
-  <vee-form action="#" method="" class="col-5">
+  <vee-form :validation-schema="rules" @submit="sendData" class="col-5 form">
     <div>
-    <input type="email" placeholder="Введите email" class="size">
+    <vee-field name="email" type="email" placeholder="Введите email" class="size"/>
+    <vee-error name="email"/>
     </div>
     <div>
-    <input type="password" placeholder="Введите пароль" class="size">
+    <vee-field name="password" type="password" placeholder="Введите пароль" class="size"/>
+    <vee-error name="password"/>
     </div>
     <div class="memory">
     <label><input type="checkbox" checked>Запомнить</label>
@@ -17,12 +18,29 @@
 </template>
 
 <script>
-// import {Form, Field, ErrorMessage, configure} from 'vee-validate';
-// import * as yup from 'yup';
+import {Form, Field, ErrorMessage, configure} from 'vee-validate';
+import * as yup from 'yup';
 // import {mapMutations} from "vuex";
 
+configure({
+  validateOnInput: true
+});
+
 export default {
-    name: "Autorization"
+  name: "Autorization",
+  components: {
+    VeeForm: Form, // границы форм
+    VeeField: Field, // поле формы, по умолчанию input
+    VeeError: ErrorMessage // элемент html для вывода ошибок
+  },
+  data (){
+    return {
+      rules: yup.object({
+        email: yup.string().trim().required('Введите email').email('Логин должен быть в формате admin@gmail.com'),
+        password: yup.number().required('Введите password').min(6, 'Минимальное количество символов 8').typeError('Пароль должен состоять из цифр')
+      })
+    }
+  }
 }
 </script>
 
@@ -39,7 +57,7 @@ export default {
   justify-content: center;
 }
 
-vee-form {
+.form {
   border: solid black;
   padding: 40px;
   margin-top: 200px;

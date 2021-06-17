@@ -5,7 +5,7 @@ export default createStore({
     order: [], // товары в корзине
     usersName: [
       {user: "apple@gmail.com", password: "12345678"},
-      {user: "mac@gmail.com", password: "8654321"}
+      {user: "mac@gmail.com", password: "87654321"}
     ],
     usersPhone: [
       {
