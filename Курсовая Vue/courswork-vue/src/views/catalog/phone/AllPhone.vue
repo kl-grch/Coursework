@@ -1,10 +1,13 @@
 <template>
-  Телефоны
-  <div>{{$route.params.id}}</div>
+  <!-- <div>{{$route.params.id}}</div> -->
   <h2>{{phone.title}}</h2>
   <div>
-      <!-- <img :src="phone.img"> -->
-      <p>{{phone.price}}</p>
+      <img :src="phone.img" height="500">
+      <div>Тут будет карусель из 3 фото</div>
+      <p>{{phone.fullDescription}}</p>
+      <p>Цена: <b>{{phone.price}}</b> руб</p>
+      <p><button type="button">Добавить в корзину</button></p>
+
   </div>
 </template>
 

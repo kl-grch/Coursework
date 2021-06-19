@@ -1,4 +1,6 @@
 <template>
+    <router-view></router-view>
+
 <div class="cont">
     <div class="phone col-6" v-for="phone in allPhone" :key="phone.id">
     <h2>{{phone.title}}</h2>
@@ -9,7 +11,6 @@
     <router-link :to="{name: 'Phone', params: {id: phone.id}}">Подробнее ➦</router-link>
   </div>
   </div>
-    <router-view></router-view>
 </template>
 
 <script>
@@ -21,7 +22,7 @@ export default {
     },
       created(){
     // обращение к actions
-    this.$store.dispatch('loadData');
+    // this.$store.dispatch('loadData');
   }
 }
 

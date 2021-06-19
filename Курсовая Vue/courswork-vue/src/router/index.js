@@ -12,6 +12,7 @@ const routes = [
           {
             name: 'Phone',
             path: 'phone/:id',
+            component: () => import ('../views/catalog/phone/AllPhone.vue')
           }
         ]
       },

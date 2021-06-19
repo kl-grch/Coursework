@@ -4,8 +4,9 @@ export default createStore({
   state: {
     order: [], // товары в корзине
     usersName: [
-      {user: "apple@gmail.com", password: "12345678"},
-      {user: "mac@gmail.com", password: "87654321"}
+      {name: "apple@gmail.com", password: "12345678"},
+      {name: "mac@gmail.com", password: "87654321"},
+      {name: "kolyagerich@gmail.com", password: '02041993'}
     ],
     usersPhone: [
       {
@@ -237,6 +238,9 @@ export default createStore({
     },
     accsesById: state => (id) => { 
       return state.usersAccses.filter(accses => accses.id == id)[0];
+    },
+    getUsers(state){
+      return state.usersName;
     }
   },
   mutations: {
@@ -245,7 +249,7 @@ export default createStore({
     // },
     // markRead(state, index){
     //   state.usersBook[index].finished = true;
-    // }
+    // },
     order(state,phone, mac, pad, accses){
       state.order.push(phone, mac,pad, accses);
     }
