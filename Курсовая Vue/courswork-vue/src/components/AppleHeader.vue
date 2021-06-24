@@ -37,4 +37,8 @@ nav a {
     color: white;
 }
 
+.apple {
+    color: red;
+    
+}
 </style>

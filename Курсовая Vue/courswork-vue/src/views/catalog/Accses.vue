@@ -1,28 +1,29 @@
 <template>
-<div class="cont">
-    <div class="phone col-6" v-for="accses in allAccses" :key="accses.id">
-    <h2>{{accses.title}}</h2>
-    <img :src="accses.img" height="250">
-    <p>{{accses.description}}</p>
-    <p><b>Цена: </b>{{accses.price}} руб</p>
-    <p><button type="button">Добавить в корзину</button></p>
-    <router-link :to="{name: 'Accses', params: {id: accses.id}}">Подробнее ➦</router-link>
-    
-  </div>
-  </div>
     <router-view></router-view>
+
+<div class="cont">
+    <div class="phone col-6" v-for="item in allAccses" :key="item.id">
+    <h2>{{item.title}}</h2>
+    <img :src="item.img" height="250">
+    <p>{{item.description}}</p>
+    <p><b>Цена: </b>{{item.price}} ₽</p>
+    <p><button type="button" @click="order(item)">Добавить в корзину</button></p>
+    <router-link :to="{name: 'Full', params: {id: item.id}}">Подробнее ➩</router-link>
+  </div>
+  </div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex';
 export default {
-    name: "Accses", // allPhone
+    name: "Accses", 
     computed: {
       ...mapGetters(['allAccses'])
     },
-      created(){
-    // обращение к actions
-    this.$store.dispatch('loadData');
+  methods:{
+    order(item){
+      this.$store.commit('addToOrder', {device: item});
+    }
   }
 }
 
@@ -37,13 +38,10 @@ a {
 }
 
 .phone {
-  display: block;
   text-align: center;
   align-items: center;
   justify-content: center;
   margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .cont {
@@ -52,6 +50,10 @@ a {
   justify-content: space-around;
   justify-items: center;
   margin-bottom: 100px;
+}
+
+.catalog {
+  display: none;
 }
 
 </style>

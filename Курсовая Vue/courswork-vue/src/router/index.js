@@ -7,45 +7,25 @@ const routes = [
     children: [
       {
         path: 'phone',
-        component: () => import ('../views/catalog/Phone.vue'),
-        children: [
-          {
-            name: 'Phone',
-            path: 'phone/:id',
-            component: () => import ('../views/catalog/phone/AllPhone.vue')
-          }
-        ]
+        component: () => import ('../views/catalog/Phone.vue')
       },
       {
         path: 'mac',
-        component: () => import ('../views/catalog/Mac.vue'),
-        children: [
-          {
-            name: 'Mac',
-            path: 'mac/:id',
-          }
-        ]
+        component: () => import ('../views/catalog/Mac.vue')
       },
       {
         path: 'pad',
-        component: () => import ('../views/catalog/Pad.vue'),
-        children: [
-          {
-            name: 'Pad',
-            path: 'pad/:id',
-        }
-        ]
+        component: () => import ('../views/catalog/Pad.vue')
       },
       {
         path: 'accses',
-        component: () => import ('../views/catalog/Accses.vue'),
-        children: [
-          {
-            name: 'Accses',
-            path: 'accses/:id',
-          }
-        ]
+        component: () => import ('../views/catalog/Accses.vue')
       },
+      {
+        name: 'Full',
+        path: 'device/:id',
+        component: () => import ('../views/catalog/Full.vue')
+      }
     ]
   },
   {

@@ -1,7 +1,7 @@
 <template>
 <div class="err">
   <img src="https://www.boostability.com/cdn-cgi/images/cf-no-screenshot-warn.png" height="100">
-</div>
+</div> 
 </template>
 
 <script>

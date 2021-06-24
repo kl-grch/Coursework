@@ -1,28 +1,29 @@
 <template>
-<div class="cont">
-    <div class="phone col-6" v-for="pad in allPad" :key="pad.id">
-    <h2>{{pad.title}}</h2>
-    <img :src="pad.img" height="250">
-    <p>{{pad.description}}</p>
-    <p><b>Цена: </b>{{pad.price}} руб</p>
-    <p><button type="button">Добавить в корзину</button></p>
-    <router-link :to="{name: 'Pad', params: {id: pad.id}}">Подробнее ➦</router-link>
-    
-  </div>
-  </div>
     <router-view></router-view>
+
+<div class="cont">
+    <div class="phone col-6" v-for="item in allPad" :key="item.id">
+    <h2>{{item.title}}</h2>
+    <img :src="item.img" height="250">
+    <p>{{item.description}}</p>
+    <p><b>Цена: </b>{{item.price}} ₽</p>
+    <p><button type="button" @click="order(item)">Добавить в корзину</button></p>
+    <router-link :to="{name: 'Full', params: {id: item.id}}">Подробнее ➩</router-link>
+  </div>
+  </div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex';
 export default {
-    name: "Pad", // allPhone
+    name: "Pad", 
     computed: {
       ...mapGetters(['allPad'])
     },
-      created(){
-    // обращение к actions
-    this.$store.dispatch('loadData');
+  methods:{
+    order(item){
+      this.$store.commit('addToOrder', {device: item});
+    }
   }
 }
 
@@ -49,6 +50,10 @@ a {
   justify-content: space-around;
   justify-items: center;
   margin-bottom: 100px;
+}
+
+.catalog {
+  display: none;
 }
 
 </style>

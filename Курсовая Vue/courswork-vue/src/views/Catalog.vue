@@ -1,6 +1,7 @@
 <template>
 <div class="line"></div>
-<apple-header :tabs="tabs" background="dimgrey" color="red"></apple-header>
+<apple-header :tabs="tabs" background="dimgrey" color="red">
+</apple-header>
 <router-view></router-view>
 
 <div class="catalog" v-if="$route.path.endsWith('catalog')">
@@ -70,6 +71,10 @@ img {
 
 .col-6 {
   margin-top: 20px;
+}
+
+.apple {
+  display: none;
 }
 
 </style>

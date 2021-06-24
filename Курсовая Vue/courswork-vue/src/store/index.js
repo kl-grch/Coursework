@@ -3,12 +3,17 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     order: [], // товары в корзине
+    totalSum: 0,
+    count: 0,
+    numberRow:[],
+
+
     usersName: [
       {name: "apple@gmail.com", password: "12345678"},
       {name: "mac@gmail.com", password: "87654321"},
       {name: "kolyagerich@gmail.com", password: '02041993'}
     ],
-    usersPhone: [
+    devices: [
       {
           id: 1,
           title: "iPhone 12 (RED)",
@@ -19,7 +24,7 @@ export default createStore({
           description: "Смартфон Apple iPhone 12 64GB (PRODUCT)RED",
           fullDescription: "A14 Bionic, самый быстрый процессор iPhone. Дисплей OLED от края до края. И Ночной режим на всех камерах.",
           price: 73590,
-          phone: true
+          category: 'phone'
       },
       {
           id: 2,
@@ -31,8 +36,7 @@ export default createStore({
           description: "Apple iPhone 12 Pro 128GB (тихоокеанский синий)",
           fullDescription: "A14 Bionic, самый быстрый процессор iPhone. И система камер Pro, которая гораздо лучше работает при слабом освещении, — а на iPhone 12 Pro Max ещё лучше.",
           price: 91990,
-          phone: true
-
+          category: 'phone'
       },
       {
           id: 3,
@@ -44,8 +48,7 @@ export default createStore({
           description: "Apple iPhone SE 2020 64GB с новой комплектацией (белый)",
           fullDescription: "iPhone SE — это самый мощный компактный iPhone1 с множеством передовых технологий. A13 Bionic — самый быстрый процессор для iPhone, обеспечивающий максимальную производительность для приложений, игр и фотосъёмки. Портретный режим и шесть эффектов освещения для фотографий студийного качества.",
           price: 39990,
-          phone: true
-
+          category: 'phone'
       },
       {
           id: 4,
@@ -57,10 +60,8 @@ export default createStore({
           description: "Apple iPhone XR 64GB с новой комплектацией (коралловый)",
           fullDescription: "Новый дисплей Liquid Retina - самый продвинутый ЖК‑дисплей Apple. Еще более быстрый Face ID. Самый мощный и умный процессор iPhone. И потрясающая камера. iPhone XR - воплощение красоты и интеллекта.",
           price: 44090,
-          phone: true
-      }
-  ],
-  usersMac: [
+          category: 'phone'
+      },
       {
           id: 5,
           title: "iMac",
@@ -71,7 +72,7 @@ export default createStore({
           description: "Apple iMac 24 Retina 4,5K, M1 (7-core GPU), 8 ГБ, 256 ГБ (розовый)",
           fullDescription: "Такого компьютера вы ещё не видели. Его впечатляющий дизайн стал возможным благодаря чипу Apple M1. Дисплей Retina 4,5K с диагональю 24 дюйма и поддержкой более миллиарда цветов обеспечивает реалистичное и потрясающе детальное изображение.",
           price: 129990,
-          mac: true
+          category: 'mac'      
       },
       {
           id: 6,
@@ -83,7 +84,7 @@ export default createStore({
           description: "Apple MacBook Air 13.3 i5 1,1 ГГц, 8Гб, 512Гб SSD, Iris Plus (золотой)",
           fullDescription: "Обновленный MacBook Air доступен в трех цветах: серебристый, серый космос и золотой. У него великолепный дисплей Retina с технологией True Tone, Touch ID, клавиатура Magic Keyboard с подсветкой и трекпад Force Touch. Все это в тонком и легком корпусе из полностью переработанного алюминия и с культовым дизайном. А благодаря аккумулятору на 11 часов работы этот универсальный ноутбук готов помогать вам весь день. ",
           price: 105990,
-          mac: true
+          category: 'mac'
       },
       {
           id: 7,
@@ -95,7 +96,7 @@ export default createStore({
           description: "Apple MacBook Pro 13 Core i5 2,4 ГГц, 8 ГБ, 512 ГБ SSD, Iris Plus 655, Touch Bar (серебристый)",
           fullDescription: "Четырёхъядерный процессор Intel 8-го поколения с ускорением Turbo Boost до 4,1 ГГц. Великолепный яркий дисплей Retina с технологией True Tone, изображение на котором выглядит ещё реалистичнее. Клавиатура, разработанная Apple. И удобная панель Touch Bar для более продуктивной работы. Это самый мощный и продвинутый 13‑дюймовый ноутбук Apple.",
           price: 139990,
-          mac: true
+          category: 'mac'
       },
       {
           id: 8,
@@ -107,10 +108,8 @@ export default createStore({
           description: "Apple iMac Pro 27 с дисплеем Retina 5K, Intel Xeon W 3.2 ГГц, 32 ГБ, 1 ТБ SSD, Radeon Pro Vega 56",
           fullDescription: "Чем бы вы ни занимались — монтажом видео, 3D‑анимацией, музыкой или разработкой ПО, — вы сможете воплотить в жизнь самые грандиозные идеи. iMac Pro работает на базе процессора Intel Xeon W, который поддерживает до 18 ядер и обеспечивает потрясающую производительность. Графический процессор AMD Radeon Pro Vega позволяет выполнять моделирование и рендеринг невероятно реалистичных спецэффектов и виртуальных миров. А благодаря памяти до 256 ГБ и флеш-накопителю до 4 ТБ сохранение и загрузка проектов происходят практически мгновенно.* iMac Pro. Самый мощный iMac.",
           price: 369990,
-          mac: true
-      }
-  ],
-  usersPad: [
+          category: 'mac'
+      },
       {
           id: 9,
           title: "iPad Pro",
@@ -121,7 +120,7 @@ export default createStore({
           description: "Apple iPad Pro 12.9 Wi-Fi 128GB (2020) (серый космос)",
           fullDescription: "iPad Pro 12,9 дюйма оснащен потрясающим дисплеем Liquid Retina от края до края.1 Его новые камеры уровня Pro — широкоугольная и сверхширокоугольная — и сканер LiDAR открывают невероятные возможности для передовых приложений с дополненной реальностью. Мощный процессор A12Z Bionic обеспечивает работу всех необходимых приложений и игр со сложной графикой. Поддерживаются Apple Pencil2 и новая клавиатура Magic Keyboard с трекпадом.2 Доступна быстрая связь по Wi‑Fi. Можно работать весь день без подзарядки.4 А наличие миллионов приложений в App Store позволяет использовать iPad Pro для самых разных задач, где бы вы ни были.",
           price: 80990,
-          pad: true
+          category: 'pad'
       },
       {
           id: 10,
@@ -133,7 +132,7 @@ export default createStore({
           description: "Apple iPad Air 64Gb Wi-Fi 2020 (зеленый)",
           fullDescription: "Дисплей Liquid Retina 10,9 дюйма занимает всю переднюю панель. А с Touch ID вы сможете быстро, легко и безопасно разблокировать iPad Air и делать покупки.",
           price: 53190,
-          pad: true
+          category: 'pad'
       },
       {
           id: 11,
@@ -145,7 +144,7 @@ export default createStore({
           description: "Apple iPad 10.2 Wi-Fi 32Gb 2020 (золотой)",
           fullDescription: "Новый iPad. Он станет вашим блокнотом для записей, мобильным офисом, фотостудией, игровой приставкой и даже личным кинотеатром. Мощности процессора A12 Bionic достаточно и для важных приложений, и для увлекательных игр. Редактируйте тексты, ищите в интернете и одновременно общайтесь с коллегами по FaceTime. С Apple Pencil делать заметки на iPad просто как никогда.1 Добавьте полноразмерную клавиатуру Smart Keyboard для удобного набора текста.",
           price: 29990,
-          pad: true
+          category: 'pad'
       },
       {
           id: 12,
@@ -157,10 +156,8 @@ export default createStore({
           description: "Apple iPad mini 64Gb Wi-Fi 2019 (золотой)",
           fullDescription: "iPad mini идеально сочетает в себе компактность и производительность - за это его и любят. Теперь для любви появилось еще больше поводов. Процессор A12 Bionic с системой Neural Engine. Дисплей Retina 7,9 дюйма с технологией True Tone. И поддержка Apple Pencil, чтобы вам было ещё проще следовать за вдохновением. Это все тот же iPad mini, но теперь он умеет больше.",
           price: 37990,
-          pad: true
-      }
-  ],
-  usersAccses: [
+          category: 'pad'
+      },
       {
           id: 13,
           title: "Адаптер питания",
@@ -171,7 +168,7 @@ export default createStore({
           description: "Адаптер питания Apple USB-C 18 Вт (белый)",
           fullDescription: "Адаптер питания Apple USB-C мощностью 18 Вт дает возможность быстро и эффективно заряжать устройство дома, в офисе или в пути. Этот адаптер совместим с любыми устройствами, оснащенными портом USB-C, но для максимальной эффективности Apple рекомендует использовать его для зарядки iPad Pro 11 дюймов и iPad Pro 12,9 дюйма (3-го поколения). Также его можно использовать для быстрой зарядки iPhone 8 или новее. Кабель USB-C/Lightning продается отдельно.",
           price: 2939,
-          accses: true
+          category: 'accses'
       },
       {
           id: 14,
@@ -183,7 +180,7 @@ export default createStore({
           description: "Наушники Apple AirPods Pro (белый)",
           fullDescription: "Это наушники совершенно нового класса. AirPods Pro исключительно комфортны, в них реализована технология активного шумоподавления, и можно даже выбрать вкладыши своего размера. Вы будете лучше чувствовать музыку, а не наушники.",
           price: 19499,
-          accses: true
+          category: 'accses'
       },
       {
           id: 15,
@@ -195,7 +192,7 @@ export default createStore({
           description: "Apple Watch Series 3, 38 мм, корпус из серебристого алюминия, спортивный ремешок белого цвета",
           fullDescription: "Умные подсказки про физическую активность. Усовершенствованное приложение Пульс. Любимые плейлисты прямо на запястье. Встроенный высотомер. И более мощный процессор, благодаря которому Siri на часах может говорить. Представляем Apple Watch Series 3. У них как никогда много полезных функций, которые мотивируют на новые достижения, помогают быть активнее и позволяют оставаться на связи.",
           price: 16990,
-          accses: true
+          category: 'accses'
       },
       {
           id: 16,
@@ -207,55 +204,95 @@ export default createStore({
           description: "Клип-кейс Apple Clear Case with MagSafe для iPhone 12 Pro Max (прозрачный)",
           fullDescription: "Встроенные магниты точно совпадают с магнитами на задней поверхности iPhone 12 Pro Max – они надежно удерживают чехол и в то же время позволяют легко его снимать. Магниты идеально совмещают устройства, поэтому беспроводная зарядка выполняется еще удобнее и быстрее. При этом снимать чехол на время беспроводной зарядки не нужно – достаточно просто присоединить зарядное устройство MagSafe или положить iPhone на зарядное устройство стандарта Qi.",
           price: 4999,
-          accses: true
+          category: 'accses'
       }
   ]},
 
   getters: {
     allPhone(state){
-      return state.usersPhone.filter(phone => phone.phone)
+      return state.devices.filter(device => device.category == 'phone')
     },
     allMac(state){
-      return state.usersMac.filter(mac => mac.mac)
+      return state.devices.filter(device => device.category == 'mac')
     },
     allPad(state){
-      return state.usersPad.filter(pad => pad.pad)
+      return state.devices.filter(device => device.category == 'pad')
     },
     allAccses(state){
-      return state.usersAccses.filter(accses => accses.accses)
+      return state.devices.filter(device => device.category == 'accses')
     },
-    // finishedBookCount(state,getters){
-    //   return getters.finishedBooks.length;
-    // },
-    phoneById: state => (id) => { // вместо id можно передать любые данные 
-      return state.usersPhone.filter(phone => phone.id == id)[0];
-    },
-    macById: state => (id) => { 
-      return state.usersMac.filter(mac => mac.id == id)[0];
-    },
-    padById: state => (id) => { 
-      return state.usersPad.filter(pad => pad.id == id)[0];
-    },
-    accsesById: state => (id) => { 
-      return state.usersAccses.filter(accses => accses.id == id)[0];
+    getDeviceById: state => (id) => {
+      return state.devices.filter(device => device.id == id)[0];
     },
     getUsers(state){
       return state.usersName;
     }
   },
+
   mutations: {
-    // shareBook(state, book){
-    //   state.shared.push(book);
-    // },
-    // markRead(state, index){
-    //   state.usersBook[index].finished = true;
-    // },
-    order(state,phone, mac, pad, accses){
-      state.order.push(phone, mac,pad, accses);
+
+    addToOrder(state, {device}){
+      if(state.order.find(item => item.id === device.id)){
+        device.quantity ++;
+        device.totalprice = device.price * device.quantity;
+      }else{
+        state.order.push(device);
+        device.quantity = 1;
+        device.totalprice = device.price;
+      }
+      state.count ++;
+      state.totalSum = state.totalSum + device.price;
+  },
+
+  getLess(state, {device}){
+    let index = state.order.indexOf(device);
+    if(index>-1){
+        if(state.order[index].quantity == 0){
+          state.order.splice(index, 1);
+          state.count -= 1;
+        } else{
+          state.order[index].quantity -= 1;
+          state.order[index].totalprice = state.order[index].price * state.order[index].quantity;
+          state.totalSum -= state.order[index].price;
+          state.count -= 1;
+        }
     }
   },
-  actions: {
+
+  getMore(state, {device}){
+    let index = state.order.indexOf(device);
+    if(index>-1){
+        state.order[index].quantity += 1;
+        state.totalSum -= state.order[index].totalprice;
+        state.order[index].totalprice = state.order[index].price * state.order[index].quantity;
+        state.totalSum += state.order[index].totalprice;
+        state.count += 1;
+    }
   },
-  modules: {
+
+  removeFromOrder(state, {device}) {
+    let index = state.order.indexOf(device);
+    if (index > -1) {
+        state.count -= state.order[index].quantity;
+        state.totalSum -= state.order[index].totalprice;
+        state.order.splice(index, 1);
+    }
+},
+
+clearOrder(state){
+
+  state.count = 0;
+  state.totalSum = 0;
+  while(state.order.length){
+    state.order.pop();
   }
+},
+
+getTotalSum(state){
+  for(let item of state.order){
+    state.totalSum += item.totalprie;
+  }
+  return state.totalSum;
+}
+}
 })

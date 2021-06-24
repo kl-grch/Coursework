@@ -15,6 +15,7 @@ components: {AppleHeader, AppleFooter},
 data () {
   return {
     tabs: [
+      {name: '', path:'/'},
       {name: 'Каталог', path: '/catalog'},
       {name: 'Авторизация', path: '/autorization'},
       {name: 'Корзина', path: '/order'}
@@ -25,5 +26,6 @@ data () {
 </script>
 
 <style>
+
 
 </style>

@@ -2,13 +2,13 @@
     <router-view></router-view>
 
 <div class="cont">
-    <div class="phone col-6" v-for="phone in allPhone" :key="phone.id">
-    <h2>{{phone.title}}</h2>
-    <img :src="phone.img" height="250">
-    <p>{{phone.description}}</p>
-    <p><b>Цена: </b>{{phone.price}} руб</p>
-    <p><button type="button">Добавить в корзину</button></p>
-    <router-link :to="{name: 'Phone', params: {id: phone.id}}">Подробнее ➦</router-link>
+    <div class="phone col-6" v-for="item in allPhone" :key="item.id">
+    <h2>{{item.title}}</h2>
+    <img :src="item.img" height="250">
+    <p>{{item.description}}</p>
+    <p><b>Цена: </b>{{item.price}} ₽</p>
+    <p><button type="button" @click="order(item)">Добавить в корзину</button></p>
+    <router-link :to="{name: 'Full', params: {id: item.id}}">Подробнее ➩</router-link>
   </div>
   </div>
 </template>
@@ -16,13 +16,14 @@
 <script>
 import {mapGetters} from 'vuex';
 export default {
-    name: "Phone", // allPhon
+    name: "Phone", 
     computed: {
       ...mapGetters(['allPhone'])
     },
-      created(){
-    // обращение к actions
-    // this.$store.dispatch('loadData');
+  methods:{
+    order(item){
+      this.$store.commit('addToOrder', {device: item});
+    }
   }
 }
 
