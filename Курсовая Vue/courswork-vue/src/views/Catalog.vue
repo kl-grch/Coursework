@@ -7,27 +7,27 @@
 <div class="catalog" v-if="$route.path.endsWith('catalog')">
 <div class="col-6">
   <h2>iPhone</h2>
-  <a href="../catalog/phone">
+  <router-link to="/catalog/phone">
   <img src="https://mobilebulgaria.com/img/cms/750/774750.jpg">
-  </a>
+  </router-link>
 </div>
 <div class="col-6">
   <h2>iPad</h2>
-  <a href="../catalog/pad">
+  <router-link to="/catalog/pad">
   <img src="https://3dnews.ru/assets/external/illustrations/2020/09/15/1020709/00.jpg">
-  </a>
+  </router-link>
 </div>
 <div class="col-6">
   <h2>iMac</h2>
-  <a href="../catalog/mac">
+  <router-link to="/catalog/mac">
   <img src="https://commons.bmstu.wiki/images/a/a4/06-Mac-5-Year-Forecast.jpg">
-  </a>
+  </router-link>
 </div>
 <div class="col-6">
   <h2>Аксессуары</h2>
-  <a href="../catalog/accses">
-  <img src="https://applestore72.ru/upload/iblock/f38/f389411c98cd030b49fee6aada4e6fe2.jpg">
-  </a>
+  <router-link to="/catalog/accses">
+  <img src="https://export.sulpak.kz/promo/apple/img/axes/mac_main.jpg">
+  </router-link>
 </div>
 </div>
 

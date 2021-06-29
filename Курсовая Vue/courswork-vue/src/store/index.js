@@ -293,6 +293,6 @@ getTotalSum(state){
     state.totalSum += item.totalprie;
   }
   return state.totalSum;
-}
+},
 }
 })

@@ -12,8 +12,7 @@
           <th>🗑</th>
         </tr>
         <tr v-for="item in $store.state.order" :key="item.id">
-          <td>
-            <li v-for="(item, index) in $store.state.order" :key="index">{{index+1}}</li>
+          <td id="item">
             </td>
           <td><img :src="item.img" height="100"></td>
           <td>
@@ -25,7 +24,7 @@
           </td>
           <td>
             <button class="del" type="button" @click="dellete(item)">✘</button>
-            </td>
+          </td>
         </tr>
         <tr>
           <th colspan="4" class="price">Итого: {{$store.state.totalSum}} ₽</th>
@@ -35,8 +34,11 @@
 
 
     </div>
-    <div v-else>
+    <div v-else class="noitems">
           <h2>Добавьте товары в корзину</h2>
+          <router-link to="/catalog">
+          <img src="https://img.icons8.com/ios-glyphs/452/add-to-basket.png" height="200">
+          </router-link>
     </div>
     
   </div>
@@ -96,4 +98,20 @@ text-align: center;
   color: red;
   border: none;
 }
+
+.noitems {
+  margin-top: 200px;
+}
+
+table {
+  border-spacing:10px;counter-reset:numrows;
+  }
+
+td#item::before{
+  counter-increment:numrows;
+  content:counter(numrows);
+  
+  }
+
+
 </style>
